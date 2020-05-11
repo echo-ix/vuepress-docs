@@ -28,15 +28,20 @@ module.exports = {
     ],
     sidebar: {
       '/docker/': [{
-          title: '主题',
+          title: '介绍',
           collapsable: false,
           children: ["","one","tow"]
-        }
-      ],
+        }],
       '/springcloud/': [{
         title: '主题',
         collapsable: false,
         children: ["","one","tow","default"]
+      }],
+      '/interview-questions/': [{
+        title: '主题',
+        collapsable: false,
+        sidebarDepth: 9,
+        children: ["","class-loader","run-time","thread-status","thread-stop","thread-wait","thread-while","thread-create"]
       }]
     },
     sidebarDepth: 10,
@@ -44,11 +49,6 @@ module.exports = {
     extend: '@vuepress/theme-default',
   },
   plugins: [
-    ['@vuepress/back-to-top',true],
-    //['vuepress-plugin-code-copy',true],
-    ['vuepress-plugin-baidu-autopush',true],
-    ['sitemap',{
-      hostname: 'http://www.docs.isryan.com'
-    }],
+    ['@vuepress/back-to-top',true]
   ]
 }
