@@ -23,6 +23,7 @@ echo 'www.docs.isryan.com' > CNAME
 #第一次 初始化使用
 #git init
 git pull
+
 git add -A
 git commit -m 'deploy'
 
@@ -31,6 +32,6 @@ git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 #git push -f git@github.com:DaQiangSu/vuepress-docs.git master:gh-pages
-git push -f origin master:gh-pages
+git push origin master:gh-pages
 
 cd -
