@@ -1,0 +1,20 @@
+{
+  "name": "vuepress-docs",
+  "version": "1.0.0",
+  "description": "hello vuepress",
+  "homepage": "https://github.com/DaQiangSu/docs",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy": "deploy.sh",
+    "deploy:build": "npm run docs:build && gh-pages -d dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^2.2.0",
+    "vuepress": "^1.0.0-rc.1"
+  }
+}
