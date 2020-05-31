@@ -10,7 +10,8 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '刷面试题', link: '/interview-questions/' },
-      { text: '查看源码', link: '/sound-code/' },
+      { text: '软件安装', link: '/software-installation/' },
+      //{ text: '查看源码', link: '/sound-code/' },
       { 
         text: '微服务系列文档',
         items: [
@@ -24,7 +25,7 @@ module.exports = {
         ] 
       },
       //{ text: '惊喜彩蛋', link: '/easter-egg/' },
-      { text: '我的网址', link: 'http://www.isryan.com' },
+      { text: '我的网址', link: 'http://www.zy.isryan.com' },
     ],
     sidebar: {
       '/docker/': [{
@@ -33,15 +34,21 @@ module.exports = {
           children: ["","one","tow"]
         }],
       '/springcloud/': [{
-        title: '主题',
+        title: '微服务',
         collapsable: false,
-        children: ["","one","tow","default"]
+        children: [""]
       }],
       '/interview-questions/': [{
         title: '主题',
         collapsable: false,
         sidebarDepth: 9,
         children: ["","class-loader","run-time","thread-status","thread-stop","thread-wait","thread-while","thread-create"]
+      }],
+      '/software-installation/': [{
+        title: '教程',
+        collapsable: false,
+        sidebarDepth: 9,
+        children: [""]
       }]
     },
     sidebarDepth: 10,
