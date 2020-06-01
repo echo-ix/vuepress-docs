@@ -54,8 +54,7 @@ usermod -G gitgroup git 添加到用户组
 ```bash
 cd /home/git                  #切换到git用户目录
 git init --bare isryan.git    #创建一个裸仓库isryan.git
-chown -R git:git isryan.git   #将isryan.git下所有目录的所有权 
-							  #赋予git用户组下的git用户/用户组(user:group/ group)
+chown -R git:git isryan.git   #将isryan.git下所有目录的所有权 ，#赋予git用户组下的git用户/用户组(user:group/ group)
 ```
 
 设置相关权限
@@ -84,21 +83,32 @@ mkdir /svn
 创建仓库
 
 ```bash
-svnadmin create /svn/isryan/
+svnadmin create /svn/pc/
+svnadmin create /svn/java/
 ```
 
-配置文件svnserve.conf
+移动任意一个仓库下conf下的authz和passwd 到/svn/存储目录下
 
 ```bash
-cd /svn/isryan/
+mv pc/conf/authz /svn/
+```
+
+```bash
+mv pc/conf/passwd /svn/
+```
+
+修改每个仓库下conf下的配置文件svnserve.conf，指向统一用户配置文件
+
+```bash
+cd /svn/pc/
 vi svnserve.conf
 [general]
 
 anon-access = read
 auth-access = write
-password-db = passwd
-authz-db = authz
-realm = /svn/isryan
+password-db = /svn/passwd  #指向统一用户配置文件
+authz-db = /svn/authz      #指向统一权限配置文件
+realm = /svn/pc 		   #指定当前目录为自己的仓库
 
 [sasl]
 ```
@@ -116,17 +126,22 @@ isryan2 = isryan2
 
 配置用户权限
 
-```
+```bash
 [aliases]
 
-[groups]
-
-admin = isryan,isryan1
-user = isryan2
+[groups]      			#指定群组
+admin = admin
+pc = pc1,pc2
+java = java1,java2
 
 [/]                     #开启仓库下的所有权限
 @admin = rw
-@user = r
+
+[pc:/]                  #版本库：路径（/svn/存储目录下的路径）
+@pc = rw
+
+[java:/]                #版本库：路径（/svn/存储目录下的路径）
+@java = rw
 ```
 
 启动SVN服务
@@ -138,7 +153,8 @@ svnserve -d -r /svn/
 win连接格式
 
 ```js
-svn://ip/isryan
+svn://ip/pc
+svn://ip/java
 ```
 
 ## Docker安装步骤
