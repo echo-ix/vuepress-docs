@@ -15,7 +15,6 @@ module.exports = {
       { 
         text: '微服务系列文档',
         items: [
-          { text: 'docker', link: '/docker/' },
           { text: 'springcloud', link: '/springcloud/' }
         ]
       },
@@ -28,18 +27,13 @@ module.exports = {
       { text: '我的网址', link: 'http://www.zy.isryan.com' },
     ],
     sidebar: {
-      '/docker/': [{
-          title: '介绍',
-          collapsable: false,
-          children: ["","one","tow"]
-        }],
       '/springcloud/': [{
         title: '微服务',
         collapsable: false,
         children: [""]
       }],
       '/interview-questions/': [{
-        title: '主题',
+        title: '背吧',
         collapsable: false,
         sidebarDepth: 9,
         children: ["","class-loader","run-time","thread-status","thread-stop","thread-wait","thread-while","thread-create"]
@@ -48,7 +42,7 @@ module.exports = {
         title: '教程',
         collapsable: false,
         sidebarDepth: 9,
-        children: [""]
+        children: ["","JDK","MySQL","Idea","Redis","Git","SVN","MongoDB","Zookeeper","Kafka","Nginx","Docker","Tomcat","Nacos"]
       }]
     },
     sidebarDepth: 10,
