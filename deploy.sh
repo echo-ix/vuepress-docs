@@ -28,4 +28,4 @@ git push origin master
 # # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:DaQiangSu/vuepress-docs.git master:gh-pages
 
-# cd -
+cd -
