@@ -2,15 +2,22 @@
 
 ## Linux安装
 
-安装
+> 安装所需环境
+>
 
 ```bash
 yum -y install gcc gcc-c++ automake pcre pcre-devel zlib zlib-devel openssl openssl-devel
 ```
 
+> 下载源码（可自选版本）
+>
+
 ```bash
 wget http://nginx.org/download/nginx-1.19.1.tar.gz
 ```
+
+> 解压自选目录（个人习惯安装在/data目录下）
+>
 
 ```bash
 tar -zxvf  nginx-1.19.1.tar.gz
@@ -29,13 +36,40 @@ make
 make install
 ```
 
-查找删除即可
+> 开机自启动设置
+>
+
+vi /lib/systemd/system/nginx.service
+
+加入下面内容
+
+```bash
+[Unit]
+Description=nginx service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/data/nginx/sbin/nginx
+ExecReload=/data/nginx/sbin/nginx -s reload
+ExecStop=/data/nginx/sbin/nginx -s quit
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+```
+
+> 如果想卸载怎么玩，下面二步即可
+>
+
+- 查找删除即可
 
 ```bash
 find / -name nginx*
 ```
 
-卸载
+- 卸载
+
 
 ```bash
 yum remove nginx
@@ -45,19 +79,19 @@ yum remove nginx
 
 ## docker安装
 
-1. 搜索nginx镜像
+> 搜索nginx镜像
 
 ```shell
 docker search nginx
 ```
 
-2. 拉取nginx镜像
+> 拉取nginx镜像
 
 ```shell
 docker pull nginx
 ```
 
-3. 创建容器，设置端口映射、目录映射
+> 创建容器，设置端口映射、目录映射
 
 
 ```shell

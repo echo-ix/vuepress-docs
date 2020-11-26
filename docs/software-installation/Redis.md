@@ -17,7 +17,13 @@ yum install redis
 修改配置文件，监听所有的IP地址
 
 ```bash
-vim   /etc/redis.conf找到下面这一行 bind 127.0.0.1注释掉 #bind 127.0.0.1
+vi /etc/redis.conf
+找到下面这一行
+#bind 127.0.0.1
+修改为
+bind 127.0.0.1（不能被外网访问）
+修改为
+bind 本机固定IP地址（可以被外网访问）
 ```
 
 如果需要设置开机自动启动

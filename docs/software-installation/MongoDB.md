@@ -22,10 +22,9 @@ enabled=1
 
 ```bash
 yum install -y mongodb-org
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'admin' WITH GRANT OPTION;
 ```
 
-使用mongoDB4LB#%c(>ACTI
+使用mongoDB
 
 ```bash
 systemctl start mongod
@@ -67,3 +66,42 @@ firewall-cmd --reload
 ```
 
 ## Window安装
+
+
+
+### 启动报错情况一
+
+报错提示：/etc/rc.d/init.d/mongod; bad; vendor preset: disabled
+
+解决办法:
+将mongoDB添加到systemd
+
+vim /usr/lib/systemd/system/mongod.service
+
+```bash
+[Unit]
+Description=mongodb database
+
+[Service]
+User=mongod
+Group=mongod
+Environment="OPTIONS=--quiet -f /etc/mongod.conf"
+ExecStart=/usr/bin/mongod $OPTIONS run
+PIDFile=/var/run/mongodb/mongod.pid
+
+[Install]
+WantedBy=multi-user.target
+```
+
+建立链接
+
+```bash
+ln -s /usr/lib/systemd/system/mongod.service /etc/systemd/system/multi-user.target.wants/
+```
+
+重新加载systemctl
+
+```bash
+systemctl daemon-reload
+```
+

@@ -35,7 +35,7 @@ log.dirs=/usr/local/kafka/data/kafka-logs
 ```bash
 cd /usr/local/kafka
 
-bin/kafka-server-start.sh  config/server.properties  &
+bin/kafka-server-start.sh  -daemon config/server.properties  &
 ```
 
 创建kafka消息分区
